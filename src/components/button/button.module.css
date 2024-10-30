@@ -1,0 +1,31 @@
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.random {
+  color: lightwhite;
+  background-color: lightblue;
+}
+
+.random:hover {
+  opacity: 0.8;
+}
+
+.random:active {
+  opacity: 0.6;
+}
+
+.delete {
+  color: lightwhite;
+  background-color: lightcoral;
+}
+
+.delete:hover {
+  opacity: 0.8;
+}
+
+.delete:active {
+  opacity: 0.6;
+}
