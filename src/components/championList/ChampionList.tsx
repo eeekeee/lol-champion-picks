@@ -1,8 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import ChampionIcon from "../championIcon/ChampionIcon";
+import { ChampionType } from "../../types/Champion";
+
+type ChampionData = {
+  [key: string]: ChampionType;
+};
 
 const ChampionList = () => {
-  const [champions, setChampions] = useState<any>(null);
+  const [champions, setChampions] = useState<ChampionData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -26,26 +32,21 @@ const ChampionList = () => {
   }, []);
 
   if (error) return <div>Error: {error}</div>;
-
   if (!champions) return <div>Loading...</div>;
 
-  const sortedChampions = Object.values(champions).sort((a: any, b: any) =>
+  const sortedChampions = Object.values(champions).sort((a, b) =>
     a.name.localeCompare(b.name, "ko-KR")
   );
+
   return (
     <div style={{ display: "flex", flexWrap: "wrap" }}>
-      {sortedChampions.map((champion: any) => {
-        const imageUrl = `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${champion.id}.png`;
-
+      {sortedChampions.map((champion) => {
         return (
-          <div key={champion.id} style={{ margin: "5px", textAlign: "center" }}>
-            <img
-              src={imageUrl}
-              alt={champion.name}
-              style={{ width: "80px", height: "80px", objectFit: "cover" }}
-            />
-            <p>{champion.name}</p>
-          </div>
+          <ChampionIcon
+            key={champion.id}
+            id={champion.id}
+            name={champion.name}
+          />
         );
       })}
     </div>
