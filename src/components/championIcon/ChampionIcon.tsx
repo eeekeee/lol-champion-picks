@@ -1,3 +1,4 @@
+import { useState } from "react";
 import classes from "./ChampionIcon.module.css";
 
 interface ChampionIconProps {
@@ -6,12 +7,13 @@ interface ChampionIconProps {
 }
 
 const ChampionIcon = ({ id, name }: ChampionIconProps) => {
+  const [selected, setSelected] = useState<boolean>(false);
   const onHoverHandler = () => {
     console.log(`ChampionIcon: ${name} hovered`);
   };
 
   const onClickHandler = () => {
-    console.log(`ChampionIcon: ${name} clicked`);
+    setSelected((prev) => !prev);
   };
 
   const imageUrl = `https://ddragon.leagueoflegends.com/cdn/14.20.1/img/champion/${id}.png`;
@@ -22,7 +24,11 @@ const ChampionIcon = ({ id, name }: ChampionIconProps) => {
       onMouseEnter={onHoverHandler}
       onClick={onClickHandler}
     >
-      <img className={classes.icon_image} src={imageUrl} alt={name}></img>
+      <img
+        className={`${classes.icon_image} ${selected ? classes.selected : ""}`}
+        src={imageUrl}
+        alt={name}
+      ></img>
       <span className={classes.icon_name}>{name}</span>
     </div>
   );
