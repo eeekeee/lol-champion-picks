@@ -3,11 +3,12 @@ import { ChampionType } from "../../types/Champion";
 import Button from "../button/Button";
 import classes from "./RandomPick.module.css";
 
-interface RandomPickProps {
-  ExcludedIndex: number[];
-}
+// interface RandomPickProps {
+//   ExcludedIndex: number[];
+// }
 
-const RandomPick = ({ ExcludedIndex }: RandomPickProps) => {
+// const RandomPick = ({ ExcludedIndex }: RandomPickProps) => {
+const RandomPick = () => {
   const [data, setData] = useState<ChampionType | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
