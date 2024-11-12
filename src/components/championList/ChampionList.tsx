@@ -11,11 +11,18 @@ const ChampionList = () => {
   const [champions, setChampions] = useState<ChampionData | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+
+
   useEffect(() => {
     const fetchChampionData = async () => {
       try {
+        const versionResponse = await axios.get(
+          "https://ddragon.leagueoflegends.com/api/versions.json"
+        );
+        const latestVersion = versionResponse.data[0]; // 첫 번째 값이 최신 버전
+
         const response = await axios.get(
-          "https://ddragon.leagueoflegends.com/cdn/14.20.1/data/ko_KR/champion.json"
+          `https://ddragon.leagueoflegends.com/cdn/${latestVersion}/data/ko_KR/champion.json`
         );
         setChampions(response.data.data);
       } catch (err: unknown) {
