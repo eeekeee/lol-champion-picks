@@ -7,7 +7,7 @@ config();
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: "/lol-random-picks/",
+  base: "/lol-champion-picks/",
   define: {
     "process.env": process.env,
   },

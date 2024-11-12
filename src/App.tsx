@@ -5,7 +5,7 @@ import Home from "./pages/home/Home";
 
 const router = createBrowserRouter([
   {
-    path: process.env.PUBLIC_URL,
+    path: "/lol-champion-picks",
     element: <RootLayout />,
     children: [
       {
