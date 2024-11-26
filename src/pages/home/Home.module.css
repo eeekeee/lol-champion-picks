@@ -1,0 +1,15 @@
+.container {
+  display: flex; /* 요소를 좌우로 배치 */
+  flex-direction: row; /* 기본값이므로 명시적으로 추가 */
+  justify-content: space-between; /* 요소 사이의 간격 */
+  align-items: flex-start; /* 상단 정렬 */
+  gap: 16px; /* 요소 간 간격 (선택사항) */
+}
+
+.container > :first-child {
+  flex: 3; /* 비율 75% */
+}
+
+.container > :last-child {
+  flex: 1; /* 비율 25% */
+}
